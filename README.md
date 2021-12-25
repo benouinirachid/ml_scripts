@@ -1,6 +1,12 @@
 # ml_scripts
 Ready to use Machine Learning Python Scripts.
 
+# Setup
+
+First you need to install the required python packages.
+
+    pip install -r requirements.txt
+
 # Scripts
 Data Loading 
 
