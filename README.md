@@ -53,6 +53,19 @@ Model Training
     -m MODEL_PATH, --model_path MODEL_PATH
                             path for saving trained model.
 
+Model Scoring
+
+    $ python predict.py -h
+    usage: predict.py [-h] -f FEATURES -m MODEL_PATH
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    -f FEATURES, --features FEATURES
+                            list of feeatures delimited by ',' .
+    -m MODEL_PATH, --model_path MODEL_PATH
+                            path for loading the model.
+
+
 Model Evaluation
 
     $ python evaluate.py -h
@@ -87,6 +100,10 @@ Train the ML model
     $ python train.py -i data/prepared/train_winequality-red.csv -m models/elastic_net.pkl
     #INFO: Model is succefully trained!
 
+Score the model on a new instance of data
+
+    $ python predict.py -f "7.4,0.66,0.0,1.8,0.075,13.0,40.0,0.9978,3.51,0.56,9.4" -m models/elastic_net.pkl
+    the predicted value  is : 5.613313110911338
 
 Evaluate the model
 
