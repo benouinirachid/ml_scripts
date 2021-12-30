@@ -16,6 +16,15 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "-t",
+    "--target",
+    type=str,
+    dest="target",
+    required=True,
+    help="target feature from the data file.",
+)
+
+parser.add_argument(
     "-m",
     "--model_path",
     type=str,
@@ -27,6 +36,7 @@ parser.add_argument(
 args = parser.parse_args()
 input_data = args.input_data
 model_path = args.model_path
+target = args.target
 
 if __name__ == "__main__":
     # Training a simple model to fit the training data
@@ -34,9 +44,9 @@ if __name__ == "__main__":
     l1_ratio = 0.4
     data = pd.read_csv(input_data, sep=",")
     # The predicted column is "quality" which is a scalar [3, 9]
-    train_x = data.drop(["quality"], axis=1)
-    train_y = data[["quality"]]
+    train_x = data.drop([target], axis=1)
+    train_y = data[[target]]
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
     lr.fit(train_x, train_y)
     pickle.dump(lr, open(model_path, 'wb'))
-    print("#INFO: Model is succefully processed!")
+    print("#INFO: Model is succefully trained!")

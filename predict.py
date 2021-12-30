@@ -32,4 +32,4 @@ if __name__ == "__main__":
     features_vector = [float(item) for item in features.split(",")]
     model = pickle.load(open(model_path, "rb"))
     predicted_y = model.predict([features_vector])
-    print("the predicted value  is :", predicted_y[0])
+    print("#INFO: the predicted value  is :", predicted_y[0])
